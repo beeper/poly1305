@@ -14,6 +14,8 @@ func (l *legacychacha20poly1305) sealLegacyGeneric(dst, nonce, plaintext, additi
 	}
 
 	var polyKey [32]byte
+	// append 4 zero bytes to the nonce to pad it out
+	nonce = append([]byte{0, 0, 0, 0}, nonce...)
 	s, _ := chacha20.NewUnauthenticatedCipher(l.key[:], nonce)
 	s.XORKeyStream(polyKey[:], polyKey[:])
 	s.SetCounter(1) // set the counter to 1, skipping 32 bytes
