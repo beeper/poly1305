@@ -16,6 +16,8 @@ const (
 	// KeySize is the size of the key used by this AEAD, in bytes.
 	KeySize = 32
 
+	NonceSizeLegacy = 8
+	
 	// NonceSize is the size of the nonce used with the standard variant of this
 	// AEAD, in bytes.
 	//
